@@ -15,6 +15,7 @@ class Basket {
                 basket = await BasketModel.create()
             }
             res.cookie('basketId', basket.id, {maxAge, signed})
+            console.log(req.signedCookies.basketId)
             res.json(basket)
         } catch(e) {
             next(AppError.badRequest(e.message))
@@ -102,7 +103,7 @@ class Basket {
             } else {
                 basketId = parseInt(req.signedCookies.basketId)
             }
-            basket = await BasketModel.clear(basketId)
+            const basket = await BasketModel.clear(basketId)
             res.cookie('basketId', basket.id, {maxAge, signed})
             res.json(basket)
         } catch(e) {

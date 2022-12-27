@@ -1,16 +1,20 @@
-import { Container, Navbar, Nav } from 'react-bootstrap'
+import { Container, Navbar, Nav, Button, Col, Row } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { AppContext } from './AppContext.js'
 import { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
-
+import  '../styles/components/NavBar.scss'
 const NavBar = observer(() => {
     const { user, basket } = useContext(AppContext)
     return (
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <NavLink to="/" className="navbar-brand">Магазин</NavLink>
-                <Nav className="ml-auto">
+
+        <Navbar  collapseOnSelect expand='sm' className='navbar fixed-top'>
+            <Container fluid >
+                {/* <NavLink to="/" className="navbar-brand">Магазин</NavLink> */}
+                <Navbar.Brand href="/">Магазин</Navbar.Brand>
+                    <Navbar.Toggle/>
+                    <Navbar.Collapse>
+                <Nav className="ms-auto">
                     <NavLink to="/delivery" className="nav-link">Доставка</NavLink>
                     <NavLink to="/contacts" className="nav-link">Контакты</NavLink>
                     {user.isAuth ? (
@@ -29,6 +33,7 @@ const NavBar = observer(() => {
                         {!!basket.count && <span>({basket.count})</span>}
                     </NavLink>
                 </Nav>
+                    </Navbar.Collapse>
             </Container>
         </Navbar>
     )

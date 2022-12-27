@@ -4,6 +4,7 @@ import { AppContext } from '../components/AppContext.js'
 import { Link, useNavigate } from 'react-router-dom'
 import { logout } from '../http/userAPI.js'
 
+import '../styles/pages/User.scss'
 const User = () => {
     const { user } = useContext(AppContext)
     const navigate = useNavigate()

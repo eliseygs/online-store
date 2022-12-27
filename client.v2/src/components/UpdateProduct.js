@@ -5,6 +5,7 @@ import uuid from 'react-uuid'
 import UpdateProperties from './UpdateProperties.js'
 import { createProperty, updateProperty, deleteProperty } from '../http/catalogAPI.js'
 
+import '../styles/components/UpdateProduct.scss'
 const defaultValue = {name: '', price: '', category: '', brand: ''}
 const defaultValid = {name: null, price: null, category: null, brand: null}
 

@@ -1,0 +1,174 @@
+.basketitem{
+    position: relative;
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    width:240px;
+    height:360px;
+    // flex-wrap:wrap;
+    justify-content:center;
+    background: hwb(0 100% 0%);
+    margin: 1px;
+    // box-sizing: border-box;
+    // border-radius: 8%;
+
+    &__background {
+        height:55%;
+        width: 100%;
+        top:0%;
+        object-fit: cover;
+        opacity: 0.8;
+        filter: blur(10px);
+        position:absolute;
+        z-index: 0;
+        // transform: scale(1.1);
+        // border-radius: 9px;
+        // width:'100%'; 
+        // object-fit:'contain'; 
+    }
+
+    &__img{
+        position: relative;
+        height:60%;
+        width: 100%;
+        overflow:hidden;
+        transition: transform .5s;
+        // width: auto on default
+        // width: inherit;
+        // background-size: cover;
+        // object-fit: contain;
+        // opacity: 0.8;
+        // filter: blur(7px);
+
+        &__mainimg {
+            // specify the size of the parent explicitly for the image 
+            // so, that the picture doesn`t stretch the container 
+            width: 100%;
+            height: 100%;
+            // height: 60%;//dont block dont connect stop 
+            // min-width:200px;
+            object-fit:contain;
+        }
+
+    }
+
+    &__img:hover{
+        position: relative;
+        height:60%;
+        width: 100%;
+        overflow:hidden;
+        transform: scale(1.1);
+    }
+
+    &__description{
+        position:relative;
+        display: inherit;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17.5px;
+        line-height: 24px;
+
+        /* identical to box height */
+
+        &__category{
+            color:#898989;
+        }
+
+        
+        &__definite{
+            display: inherit;
+            flex-direction: column;
+            align-items: flex-end;
+            &__amount{
+                display: inherit;
+                // flex-direction: row;
+                align-items: flex-end;
+                    &__minus{
+                        display: inherit;
+                        justify-content: center;
+                        align-items: flex-end;
+                        color:#BF5858;
+                        width: 22px;
+                        height: 22px;
+                        border: 2px solid #BF5858;
+                        border-radius: 100%;
+                    }
+
+                    &__minus:hover{
+                        display: inherit;
+                        justify-content: center;
+                        align-items: flex-end;
+                        background-color:#BF5858;
+                        color:#ffffff;
+                        width: 22px;
+                        height: 22px;
+                        border: 2px solid #BF5858;
+                        border-radius: 100%;
+                    }
+                    
+
+                    &__plus{
+                        display: inherit;
+                        justify-content: center;
+                        align-items: flex-end;
+                        color:#48C28D;
+                        width: 22px;
+                        height: 22px;
+                        border: 2px solid #48C28D;
+                        border-radius: 100%;
+                    }
+                    &__plus:hover{
+                        display: inherit;
+                        justify-content: center;
+                        align-items: flex-end;
+                        background-color:#4fdea0;
+                        color:#ffffff;
+                        width: 22px;
+                        height: 22px;
+                        border: 2px solid #4fdea0;
+                        border-radius: 100%;
+                    }
+            }
+        }
+
+    }
+    &__basket{
+            position:relative;
+            $root: &;
+            display:inherit;
+            align-self: flex-start;
+            border: 2px solid #BF5858;
+            border-radius: 13px;
+            width: 55px;
+
+            &__location{
+                background-size: contain;
+                background-image:url('../../assets/img/basket.png');
+                background-repeat: no-repeat;
+                margin: 1.6px auto 1.6px auto;
+                width: 17.5px;
+                height: 22.5px;
+            }
+
+            &:hover #{$root}__location{
+                background-size:contain;
+                background-image:url('../../assets/img/basketHover.png');
+                background-repeat:no-repeat;
+                margin: 1.6px auto 1.6px auto;
+                width: 17.5px;
+                height: 22.5px;
+            }
+    }
+
+    &__basket:hover {
+            display:inherit;
+            align-self: flex-start;
+            background-color:#bf5959;
+            border: 2px solid #BF5858;
+            border-radius: 13px;
+            width: 55px;
+    }
+
+}
+

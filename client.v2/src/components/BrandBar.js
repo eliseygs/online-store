@@ -4,6 +4,8 @@ import { AppContext } from './AppContext.js'
 import { observer } from 'mobx-react-lite'
 import { useNavigate, createSearchParams } from 'react-router-dom'
 
+import  '../styles/components/BrandBar.scss'
+
 const BrandBar = observer(() => {
     const { catalog } = useContext(AppContext)
     const navigate = useNavigate()
@@ -26,18 +28,19 @@ const BrandBar = observer(() => {
     }
 
     return (
-        <ListGroup horizontal>
+        <div>
             {catalog.brands.map(item =>
-                <ListGroup.Item
+                    <div
+                    className='brandbar'
                     key={item.id}
                     active={item.id === catalog.brand}
                     onClick={() => handleClick(item.id)}
                     style={{cursor: 'pointer'}}
                 >
                     {item.name}
-                </ListGroup.Item>
+                    </div>
             )}
-        </ListGroup>
+        </div>
     )
 })
 

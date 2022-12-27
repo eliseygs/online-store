@@ -1,5 +1,6 @@
 import Container from 'react-bootstrap/Container'
 
+import '../styles/pages/Contacts.scss'
 const Contacts = () => {
     return (
         <Container>

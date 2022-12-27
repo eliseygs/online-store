@@ -1,5 +1,6 @@
 import { Spinner } from 'react-bootstrap'
 
+import  '../styles/components/Loader.scss'
 const Loader = () => {
     const style = {
         width: '100%',

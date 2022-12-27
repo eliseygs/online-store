@@ -1,6 +1,7 @@
 import { Modal, Button, Form } from 'react-bootstrap'
 import { createBrand, fetchBrand, updateBrand } from '../http/catalogAPI.js'
 import { useState, useEffect } from 'react'
+import  '../styles/components/EditBrand.scss'
 
 const EditBrand = (props) => {
     const { id, show, setShow, setChange } = props

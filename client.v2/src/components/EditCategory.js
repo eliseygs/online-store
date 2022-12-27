@@ -2,6 +2,7 @@ import { Modal, Button, Form } from 'react-bootstrap'
 import { createCategory, fetchCategory, updateCategory } from '../http/catalogAPI.js'
 import { useState, useEffect } from 'react'
 
+import '../styles/components/EditCategory.scss'
 const EditCategory = (props) => {
     const { id, show, setShow, setChange } = props
 

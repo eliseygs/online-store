@@ -50,3 +50,13 @@ export const check = async () => {
         return false
     }
 }
+
+export const fetchProdGrade = async (id) => {
+    const { data } = await authInstance.get(`user/productId/${id}`)
+    return data
+}
+
+export const appendProdGrade = async (id, rate) => {
+    const { data } = await authInstance.post(`user/productId/${id}/grade/${rate}`)
+    return data
+}

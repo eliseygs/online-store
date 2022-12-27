@@ -2,6 +2,7 @@ import { Modal, Button, Form, Row, Col } from 'react-bootstrap'
 import { createProduct, fetchCategories, fetchBrands } from '../http/catalogAPI.js'
 import { useState, useEffect } from 'react'
 import CreateProperties from './CreateProperties.js'
+import '../styles/components/CreateProduct.scss'
 
 const defaultValue = {name: '', price: '', category: '', brand: ''}
 const defaultValid = {name: null, price: null, category: null, brand: null}

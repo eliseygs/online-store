@@ -1,24 +1,35 @@
 import { Container, Row, Col, Button, Image, Spinner, Table } from 'react-bootstrap'
-import { useEffect, useState, useContext } from 'react'
-import { appendProdRating, fetchOneProduct, fetchProdRating } from '../http/catalogAPI.js'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState, useContext, useMemo, useCallback } from 'react'
+import { fetchOneProduct, fetchProdRating} from '../http/catalogAPI.js'
+import { useNavigate, useParams } from 'react-router-dom'
 import { append } from '../http/basketAPI.js'
 import { AppContext } from '../components/AppContext.js'
-import ReactStars from "react-rating-stars-component"
-const Product = () => {
+import { observer } from 'mobx-react-lite'
+import Rating from '../components/Rating/Rating.js'
+import { appendProdGrade, fetchProdGrade } from '../http/userAPI.js'
+import '../styles/pages/Product.scss'
+const Product = observer(() => {
     const { id } = useParams()
     const { basket } = useContext(AppContext)
-    const { catalog } = useContext(AppContext)
+    const { user } = useContext(AppContext)
     const [product, setProduct] = useState(null)
     const [rating, setRating] = useState(null)
-
+    const [grade, setGrade] = useState(null)
+    // const [grade, setGrade] = useState(null)
+    const navigate = useNavigate()
+    
     useEffect(() => {
         fetchOneProduct(id).then(data => setProduct(data))
+        fetchProdGrade(id).then(data => setGrade(data)).catch(data => setGrade(0))
+        // fetchProdRating(id).then(data => setRating(data))
     }, [id])
 
     useEffect(() => {
-        fetchProdRating(id).then(data => setRating(data))
-    }, [id])
+        fetchProdRating(id).then(data => setRating(data)).catch(data => setRating({votes:0, rating:0}))
+        // fetchProdRating(id).then(data => setRating(data))
+    }, [id, grade])
+
+
 
     const handleClick = (productId) => {
         append(productId).then(data => {
@@ -26,19 +37,20 @@ const Product = () => {
         })
     }
 
-    if (!product) {
-        return <Spinner animation="border" />
-    }
 
-     const ratingChanged = (rate)=>{
+     const gradeProdChanged = (rate)=>{
+            console.log(user.isAuth) 
+            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaa') 
     //     setUserRating(rate)
     //     console.log('aaaaa')
     //     console.log(localStorage.getItem('token'))
-           appendProdRating(id, rate).then(data =>{
+           {!user.isAuth ?
+            navigate(`/login`)
+            :
+            appendProdGrade(id, rate).then(data=> setGrade(data))
+            //parseFloat
                  //catalog.grade = data
-                 rating.rate = data
            }
-           )
              //user.products = data.products
              //catalog.products = data.products
 
@@ -46,6 +58,12 @@ const Product = () => {
          
     // }
      }
+    if (!product) {
+        return <Spinner animation="border" />
+    }
+
+
+
     return (
         <Container>
             <Row className="mt-3 mb-3">
@@ -62,22 +80,10 @@ const Product = () => {
                     <p>Бренд: {product.brand.name}</p>
                     <p>Категория: {product.category.name}</p>
                     <div>
-                            <ReactStars
-                                count={5}
-                                value={catalog.grade}
-                                onChange={ratingChanged}
-                                size={24}
-                                isHalf={true}
-                                emptyIcon={<i className="far fa-star"></i>}
-                                halfIcon={<i className="fa fa-star-half-alt"></i>}
-                                fullIcon={<i className="fa fa-star"></i>}
-                                activeColor="#ffd700"
-                              />
-                        {rating ? (
-                            <p> {rating.rate} Рейтинг: {rating.rating}, голосов {rating.votes}</p>
-                        ) : (
-                            <Spinner animation="border" />
-                        )}
+                        {/* {(grade !== null)  && rating ? <Rating rating={rating.rating} votes={rating.votes} onChangeValue={gradeProdChanged} defaultState={grade}/> */}
+                        {grade !=null && rating ? <Rating rating={rating.rating} votes={rating.votes} onChangeValue={gradeProdChanged} defaultState={Number(grade)}/>
+                        :
+                        <Spinner animation='border'/>}
                     </div>
                     <Button onClick={() => handleClick(product.id)}>Добавить в корзину</Button>
                 </Col>
@@ -102,5 +108,5 @@ const Product = () => {
         </Container>
     )
 }
-
+)
 export default Product

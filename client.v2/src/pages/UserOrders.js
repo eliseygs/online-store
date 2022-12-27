@@ -3,6 +3,7 @@ import { userGetAll as getAllOrders } from '../http/orderAPI.js'
 import { Container, Spinner } from 'react-bootstrap'
 import Orders from '../components/Orders.js'
 
+import '../styles/pages/UserOrders.scss'
 const UserOrders = () => {
     const [orders, setOrders] = useState(null)
     const [fetching, setFetching] = useState(true)

@@ -3,6 +3,7 @@ import { fetchCategories, deleteCategory } from '../http/catalogAPI.js'
 import { Button, Container, Spinner, Table } from 'react-bootstrap'
 import EditCategory from '../components/EditCategory.js'
 
+import '../styles/pages/AdminCategories.scss'
 const AdminCategories = () => {
     const [categories, setCategories] = useState(null) // список загруженных категорий
     const [fetching, setFetching] = useState(true) // загрузка списка категорий с сервера

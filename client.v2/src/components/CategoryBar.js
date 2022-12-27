@@ -1,9 +1,9 @@
-import { ListGroup } from 'react-bootstrap'
+import { Button, ListGroup } from 'react-bootstrap'
 import { useContext } from 'react'
 import { AppContext } from './AppContext.js'
 import { observer } from 'mobx-react-lite'
 import { useNavigate, createSearchParams } from 'react-router-dom'
-
+import '../styles/components/CategoryBar.scss'
 const CategoryBar = observer(() => {
     const { catalog } = useContext(AppContext)
     const navigate = useNavigate()
@@ -26,18 +26,19 @@ const CategoryBar = observer(() => {
     }
 
     return (
-        <ListGroup>
+        <div>
             {catalog.categories.map(item =>
-                <ListGroup.Item
+                <div
+                    className='categorybar'
                     key={item.id}
-                    active={item.id === catalog.category}
+                    // active={item.id === catalog.category}
                     onClick={() => handleClick(item.id)}
                     style={{cursor: 'pointer'}}
                 >
                     {item.name}
-                </ListGroup.Item>
+                </div>
             )}
-        </ListGroup>
+        </div>
     )
 })
 

@@ -13,7 +13,8 @@ const pretty = (basket) => {
                 id: item.id,
                 name: item.name,
                 price: item.price,
-                quantity: item.basket_product.quantity
+                image: item.image,
+                quantity: item.basket_product.quantity,
             }
         })
     }
@@ -25,7 +26,7 @@ class Basket {
         let basket = await BasketMapping.findByPk(basketId, {
             attributes: ['id'],
             include: [
-                {model: ProductMapping, attributes: ['id', 'name', 'price']},
+                {model: ProductMapping, attributes: ['id', 'name', 'price', 'image']},
             ],
         })
         if (!basket) {

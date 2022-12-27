@@ -1,6 +1,7 @@
 import { Card, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
+import '../styles/components/ProductItem.scss'
 const ProductItem = ({data}) => {
     const navigate = useNavigate()
     return (
@@ -13,7 +14,13 @@ const ProductItem = ({data}) => {
                 )}
                 <Card.Body style={{height: 100, overflow: 'hidden'}}>
                     <p>Бренд: {data.brand.name}</p>
-                    <strong>{data.name}rating:{data.rating}</strong>
+                    <div className='d-flex'>
+                    <strong>{data.name}</strong>
+                        <div className="ms-auto m">
+                            <strong >{data.rating}</strong>
+                            <img style={{height:39, width:39}} className="mb-1" src="https://img.freepik.com/free-vector/start_53876-25533.jpg" />
+                        </div>
+                    </div>
                 </Card.Body>
             </Card>
         </Col>

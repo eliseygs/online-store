@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { AppContext } from '../components/AppContext.js'
 import { Link, useNavigate } from 'react-router-dom'
 import { logout } from '../http/userAPI.js'
+import '../styles/pages/Admin.scss'
 
 const Admin = () => {
     const { user } = useContext(AppContext)

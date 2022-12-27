@@ -8,9 +8,12 @@ const router = new express.Router()
 router.post('/signup', UserController.signup)
 router.post('/login', UserController.login)
 router.get('/check', authMiddleware, UserController.check)
+router.get('/productId/:productId([0-9]+)', authMiddleware, UserController.getGrade)
+router.post('/productId/:productId([0-9]+)/grade/:grade([0-5]+)', authMiddleware, UserController.updateGrade)
 
 router.get('/getall', authMiddleware, adminMiddleware, UserController.getAll)
 router.get('/getone/:id([0-9]+)', authMiddleware, adminMiddleware, UserController.getOne)
+
 router.post('/create', authMiddleware, adminMiddleware, UserController.create)
 router.put('/update/:id([0-9]+)', authMiddleware, adminMiddleware, UserController.update)
 router.delete('/delete/:id([0-9]+)', authMiddleware, adminMiddleware, UserController.delete)

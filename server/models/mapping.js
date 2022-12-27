@@ -32,6 +32,7 @@ const Product = sequelize.define('product', {
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
     price: {type: DataTypes.INTEGER, allowNull: false},
     image: {type: DataTypes.STRING, allowNull: false},
+    rating:{type:DataTypes.REAL, defaultValue:0 }
 })
 
 // модель «Категория», таблица БД «categories»
@@ -48,11 +49,11 @@ const Brand = sequelize.define('brand', {
 
 // связь между товаром и пользователем через промежуточную таблицу «rating»
 // у этой таблицы будет составной первичный ключ (product_id + user_id)
-const Rating = sequelize.define('rating', {
-    id:{type: DataTypes.INTEGER, primaryKey:true, autoIncremant:true}
-})
+// const Rating= sequelize.define('rating',{
+//     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+// })
 
-const RatingProduct= sequelize.define('rating_product',{
+const UserProduct= sequelize.define('user_product',{
     rate:{type: DataTypes.REAL, defaultValue:0 }
 })
 
@@ -136,15 +137,15 @@ Product.belongsTo(Brand)
 // связь many-to-many товаров и пользователей через промежуточную таблицу rating;
 // за один товар могут проголосовать несколько зарегистрированных пользователей,
 // один пользователь может проголосовать за несколько товаров
-Product.belongsToMany(Rating, {through: RatingProduct, onDelete: 'CASCADE'})
-Rating.belongsToMany(Product, {through: RatingProduct , onDelete: 'CASCADE'}, {as:'products'})
+Product.belongsToMany(User, {through: UserProduct, onDelete: 'CASCADE'})
+User.belongsToMany(Product, {through: UserProduct , onDelete: 'CASCADE'}, {as:'products'})
 
 // super many-to-many https://sequelize.org/master/manual/advanced-many-to-many.html
 // это обеспечит возможность любых include при запросах findAll, findOne, findByPk
-Rating.hasMany(RatingProduct)
-RatingProduct.belongsTo(Rating)
-Product.hasMany(RatingProduct)
-RatingProduct.belongsTo(Product)
+User.hasMany(UserProduct)
+UserProduct.belongsTo(User)
+Product.hasMany(UserProduct)
+UserProduct.belongsTo(Product)
 
 // связь товара с его свойствами: у товара может быть несколько свойств, но
 // каждое свойство связано только с одним товаром
@@ -167,8 +168,7 @@ export {
     Product,
     Category,
     Brand,
-    Rating,
-    RatingProduct,
+    UserProduct,
     BasketProduct,
     ProductProp,
     Order,

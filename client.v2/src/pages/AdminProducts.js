@@ -4,6 +4,7 @@ import { Button, Container, Spinner, Table, Pagination } from 'react-bootstrap'
 import CreateProduct from '../components/CreateProduct.js'
 import UpdateProduct from '../components/UpdateProduct.js'
 
+import '../styles/pages/AdminProducts.scss'
 // количество товаров на страницу
 const ADMIN_PER_PAGE = 6
 

@@ -57,4 +57,6 @@ router.delete(
     ProductPropController.delete
 )
 
+router.get('/:productId([0-9]+)/rating', ProductController.getRating)
+
 export default router

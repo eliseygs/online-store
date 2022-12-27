@@ -1,0 +1,16 @@
+
+.custom-btn {
+  background-color: #4fdea0 !important;
+  background-color: #fcfc00b6;
+}
+/* //#fed900 */
+
+.navbar{
+  position: fixed;
+  background: rgba(79, 222, 160, 0.34);
+  box-shadow: 0px 0px 15px 6px rgba(195, 244, 223, 0.62);
+  backdrop-filter: blur(11px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 27px;
+  color:antiquewhite;
+}

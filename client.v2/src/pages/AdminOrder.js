@@ -3,6 +3,7 @@ import { adminGetOne as getOneOrder } from '../http/orderAPI.js'
 import { Container, Spinner } from 'react-bootstrap'
 import Order from '../components/Order.js'
 import { useParams } from 'react-router-dom'
+import '../styles/pages/AdminOrder.scss'
 
 const AdminOrder = () => {
     const { id } = useParams()

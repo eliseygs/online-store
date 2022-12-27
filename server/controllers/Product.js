@@ -66,6 +66,15 @@ class Product {
             next(AppError.badRequest(e.message))
         }
     }
+
+    async getRating(req, res, next){
+        try {
+                const rating= await ProductModel.getRating(parseInt(req.params.productId))
+                res.json(rating)
+        } catch(e) {
+            next(AppError.badRequest(e.message))
+        }
+    }
 }
 
 export default new Product()

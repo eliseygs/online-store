@@ -5,6 +5,7 @@ import { Container, Card, Form, Button } from 'react-bootstrap'
 import { login } from '../http/userAPI.js'
 import { observer } from 'mobx-react-lite'
 
+import '../styles/pages/Login.scss'
 const Login = observer(() => {
     const { user } = useContext(AppContext)
     const navigate = useNavigate()

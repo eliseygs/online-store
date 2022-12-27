@@ -1,0 +1,8 @@
+.basketlist{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    // flex-direction: column-reverse;
+    // not work because for child connect flex-direction: ;column and inline
+    // background-color: aqua;
+}

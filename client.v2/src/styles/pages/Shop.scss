@@ -1,0 +1,34 @@
+.shopcontainer{
+    display: grid;
+    grid-template-areas: 'prevu prevu prevu'
+                         'navbar navbar navbar'
+                         'categorybar carusel filterbar'
+                         'categorybar content filterbar';
+    grid-gap: 10px;
+    grid-template-columns: 130px 1fr 100px;
+    // grid-template-columns: repeat(auto-fit, 1000px);
+    //     grid-template-rows: repeat(2, 100px);
+}
+
+.prevu{
+    grid-area: prevu;
+}
+.navbar{
+    grid-area: navbar;
+}
+
+.categorybar{
+    grid-area: categorybar;
+}
+
+.carusel{
+    grid-area: carusel;
+}
+
+.content{
+    grid-area: content;
+}
+
+.filterbar{
+    grid-area: filterbar;
+}

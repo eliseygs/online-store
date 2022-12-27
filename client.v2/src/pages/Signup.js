@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Container, Row, Card, Form, Button } from 'react-bootstrap'
 import { signup } from '../http/userAPI.js'
 import { observer } from 'mobx-react-lite'
+import '../styles/pages/Signup.scss'
 
 const Signup = observer(() => {
     const { user } = useContext(AppContext)

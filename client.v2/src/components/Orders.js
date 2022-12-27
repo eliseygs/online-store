@@ -1,5 +1,6 @@
 import { Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import '../styles/components/Orders.scss'
 
 const Orders = (props) => {
 

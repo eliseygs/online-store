@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import { createProperty, updateProperty, deleteProperty } from '../http/catalogAPI.js'
 import uuid from 'react-uuid'
+import '../styles/components/UpdateProperties.scss'
 
 const UpdateProperties = (props) => {
     const { properties, setProperties } = props

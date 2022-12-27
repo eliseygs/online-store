@@ -6,6 +6,7 @@ import { fetchBasket } from '../http/basketAPI.js'
 import { check as checkAuth } from '../http/userAPI.js'
 import { Navigate } from 'react-router-dom'
 
+import '../styles/pages/Checkout.scss'
 const isValid = (input) => {
     let pattern
     switch (input.name) {

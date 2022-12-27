@@ -57,6 +57,7 @@ class User {
         return res.json({token})
     }
 
+
     async getAll(req, res, next) {
         try {
             const users = await UserModel.getAll()
@@ -124,6 +125,26 @@ class User {
             }
             const user = await UserModel.delete(req.params.id)
             res.json(user)
+        } catch(e) {
+            next(AppError.badRequest(e.message))
+        }
+    }
+
+    async getGrade(req, res, next) {
+        try {
+                const grade= await UserModel.getGrade(parseInt(req.user.id), parseInt(req.params.productId))
+                res.json(grade)
+            }
+         catch(e) {
+            next(AppError.badRequest(e.message))
+        }
+    }
+
+    async updateGrade(req, res, next) {
+        try {
+             const {productId, grade} = req.params
+             const newGrade = await UserModel.updateGrade(productId, grade, parseInt(req.user.id))
+             res.json(newGrade)
         } catch(e) {
             next(AppError.badRequest(e.message))
         }

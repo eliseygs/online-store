@@ -4,8 +4,7 @@ import authMiddleware from '../middleware/authMiddleware.js'
 
 const router = new express.Router()
 
-router.get('/product/:productId([0-9]+)', RatingController.getOne)
-router.post('/product/:productId([0-9]+)/rate/:rate',authMiddleware, RatingController.update)
+router.get('/product/:productId([0-9]+)', RatingController.getRating)
 
 
 export default router

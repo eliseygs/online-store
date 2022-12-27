@@ -1,4 +1,5 @@
 import { Table } from 'react-bootstrap'
+import  '../styles/components/Order.scss'
 
 const Order = (props) => {
     return (

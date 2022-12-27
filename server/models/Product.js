@@ -4,6 +4,9 @@ import { Brand as BrandMapping } from './mapping.js'
 import { Category as CategoryMapping } from './mapping.js'
 import FileService from '../services/File.js'
 import AppError from '../errors/AppError.js'
+import { UserProduct as UserProductMapping} from './mapping.js'
+import pkg from 'sequelize'
+const { Op } = pkg;
 
 class Product {
     async getAll(options) {
@@ -118,6 +121,16 @@ class Product {
     async isExist(id) {
         const basket = await ProductMapping.findByPk(id)
         return basket
+    }
+
+    async getRating(productId){
+
+         const votes = await UserProductMapping.count({where:{productId, rate:{[Op.gt]: 0}}})
+         if (votes) {
+             const product= await ProductMapping.findByPk(productId)
+             return {votes, rating: product.rating}
+         }
+         return {votes:0, rating:0}
     }
 }
 

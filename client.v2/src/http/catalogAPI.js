@@ -94,12 +94,7 @@ export const fetchOneProduct = async (id) => {
 }
 
 export const fetchProdRating = async (id) => {
-    const { data } = await guestInstance.get(`rating/product/${id}`)
-    return data
-}
-
-export const appendProdRating = async (productId, rate) => {
-    const { data } = await authInstance.post(`rating/product/${productId}/rate/${rate}`) 
+    const { data } = await guestInstance.get(`product/${id}/rating`)
     return data
 }
 

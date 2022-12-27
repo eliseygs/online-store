@@ -3,6 +3,7 @@ import { fetchBrands, deleteBrand } from '../http/catalogAPI.js'
 import { Button, Container, Spinner, Table } from 'react-bootstrap'
 import EditBrand from '../components/EditBrand.js'
 
+import '../styles/pages/AdminBrands.scss'
 const AdminBrands = () => {
     const [brands, setBrands] = useState(null) // список загруженных брендов
     const [fetching, setFetching] = useState(true) // загрузка списка брендов с сервера

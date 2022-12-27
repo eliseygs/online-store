@@ -4,6 +4,7 @@ import { Button, Container, Spinner } from 'react-bootstrap'
 import Orders from '../components/Orders.js'
 import CreateOrder from '../components/CreateOrder.js'
 
+import '../styles/pages/AdminOrders.scss'
 const AdminOrders = () => {
     const [orders, setOrders] = useState(null)
     const [fetching, setFetching] = useState(true)

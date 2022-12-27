@@ -1,4 +1,5 @@
 import { Row, Col, Button, Form } from 'react-bootstrap'
+import '../styles/components/CreateProperties.scss'
 
 const CreateProperties = (props) => {
     const { properties, setProperties } = props

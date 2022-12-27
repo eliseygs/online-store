@@ -5,6 +5,7 @@ import { Table, Spinner, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import BasketItem from './BasketItem.js'
 import { observer } from 'mobx-react-lite'
+import  '../styles/components/BasketList.scss'
 
 const BasketList = observer(() => {
     const { basket } = useContext(AppContext)
@@ -53,17 +54,7 @@ const BasketList = observer(() => {
         <>
             {basket.count ? (
                 <>
-                    <Table bordered hover size="sm" className="mt-3">
-                        <thead>
-                            <tr>
-                                <th>Наименование</th>
-                                <th>Количество</th>
-                                <th>Цена</th>
-                                <th>Сумма</th>
-                                <th>Удалить</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <div className='basketlist'>
                             {basket.products.map(item => 
                                 <BasketItem
                                     key={item.id}
@@ -73,13 +64,12 @@ const BasketList = observer(() => {
                                     {...item}
                                 />
                             )}
-                            <tr>
-                                <th colSpan="3">Итого</th>
-                                <th>{basket.sum}</th>
-                                <th>руб.</th>
-                            </tr>
-                        </tbody>
-                    </Table>
+                        </div>
+                            <div>
+                                <div colSpan="3">Итого</div>
+                                <div>{basket.sum}</div>
+                                <div>руб.</div> 
+                            </div>
                     <Button onClick={() => navigate('/checkout')}>Оформить заказ</Button>
                 </>
             ) : (

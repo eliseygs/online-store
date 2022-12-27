@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react'
 import { AppContext } from './AppContext.js'
 import { observer } from 'mobx-react-lite'
 import { useNavigate, createSearchParams } from 'react-router-dom'
+import '../styles/components/ProductList.scss'
 
 const ProductList = observer(() => {
     const { catalog } = useContext(AppContext)
